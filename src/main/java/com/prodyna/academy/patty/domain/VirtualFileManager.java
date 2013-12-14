@@ -142,7 +142,7 @@ public class VirtualFileManager implements FileManager {
 	public Node add(final Folder parent, final Node aNode) {
 		aNode.setParent(parent);
 		parent.add(aNode);
-		notifyObserver(parent, new EventMessage("new node added"));
+		notifyObserver(parent, new EventMessage("new node "+aNode.getName()+" added"));
 		return aNode;
 	}
 
@@ -155,7 +155,7 @@ public class VirtualFileManager implements FileManager {
 	 */
 	public Node delete(final Node aNode) {
 		aNode.delete();
-		notifyObserver(aNode.getParent(), new EventMessage("node deleted"));
+		notifyObserver(aNode.getParent(), new EventMessage("node "+aNode.getName()+" deleted"));
 		return aNode;
 	}
 
@@ -213,10 +213,10 @@ public class VirtualFileManager implements FileManager {
 	public Node move(final Node aNode, final Folder newParent) {
 		final Folder oldParentFolder = aNode.getParent();
 		oldParentFolder.deleteChild(aNode);
-		notifyObserver(oldParentFolder, new EventMessage("node removed"));
+		notifyObserver(oldParentFolder, new EventMessage("node "+aNode.getName()+" removed"));
 
 		newParent.add(aNode);
-		notifyObserver(newParent, new EventMessage("node moved"));
+		notifyObserver(newParent, new EventMessage("node "+aNode.getName()+" moved"));
 		return aNode;
 	}
 
