@@ -61,18 +61,6 @@ public class Folder extends Node {
 	}
 
 	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ ((children == null) ? 0 : children.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -96,9 +84,4 @@ public class Folder extends Node {
 		}
 		return true;
 	}
-
-	public boolean isRoot() {
-		return (getParent() != null);
-	}
-	
 }
