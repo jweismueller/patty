@@ -13,7 +13,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.prodyna.academy.patty.api.observer.Event;
-import com.prodyna.academy.patty.api.observer.FolderChangeObserver;
+import com.prodyna.academy.patty.vfs.observer.VfsDefaultObserver;
 import com.prodyna.academy.patty.vfs.visitor.VfsPrintVisitor;
 
 public class SmokeTest extends AbstractTest {
@@ -61,11 +61,11 @@ public class SmokeTest extends AbstractTest {
 				@Override
 				public void run() {
 					Folder lorem = (Folder) manager.getFileSystem().getRoot().list("lorem").first();
-					manager.getObserverManager().addObserver(lorem, new FolderChangeObserver() {
+					manager.getObserverManager().addObserver(lorem, new VfsDefaultObserver() {
 
 						@Override
 						public void notify(Event e) {
-							log.info(">>> got folder change at node: " + e.getNode().getName());
+							log.info(">>> got event " + e.getClass());
 							eventMap.put("r1", e);
 						}
 
@@ -73,6 +73,7 @@ public class SmokeTest extends AbstractTest {
 						public boolean isRecursive() {
 							return true;
 						}
+
 					});
 
 				}
@@ -86,7 +87,7 @@ public class SmokeTest extends AbstractTest {
 				@Override
 				public void run() {
 					Folder root = manager.getFileSystem().getRoot();
-					manager.getObserverManager().addObserver(root, new FolderChangeObserver() {
+					manager.getObserverManager().addObserver(root, new VfsDefaultObserver() {
 
 						@Override
 						public void notify(Event e) {
@@ -94,10 +95,6 @@ public class SmokeTest extends AbstractTest {
 							eventMap.put("r2", e);
 						}
 
-						@Override
-						public boolean isRecursive() {
-							return true;
-						}
 					});
 
 				}
