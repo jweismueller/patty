@@ -83,8 +83,7 @@ public class VirtualFileManager implements FileManager {
 			throws UnsupportedFileType {
 		Node node;
 
-		node = FilesystemAbstractFactory.createTextFile(name, size,
-				textEncoding, pageCount);
+		node = FilesystemAbstractFactory.createTextFile(name, new TextSpecification(textEncoding, pageCount, size));
 
 		return node;
 	}
@@ -103,12 +102,10 @@ public class VirtualFileManager implements FileManager {
 
 		switch (fType) {
 		case IMAGE:
-			node = FilesystemAbstractFactory.createImageFile(name, size,
-					height, width);
+			node = FilesystemAbstractFactory.createImageFile(name, new MediaSpecification(size, height, width));
 			break;
 		case VIDEO:
-			node = FilesystemAbstractFactory.createVideoFile(name, size,
-					height, width);
+			node = FilesystemAbstractFactory.createVideoFile(name, new MediaSpecification(size, height, width));
 			break;
 		default:
 			throw new UnsupportedFileType();
