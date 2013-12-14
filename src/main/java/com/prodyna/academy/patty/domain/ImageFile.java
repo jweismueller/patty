@@ -1,6 +1,6 @@
 package com.prodyna.academy.patty.domain;
 
-import com.prodyna.academy.patty.service.Visitor;
+import com.prodyna.academy.patty.service.visitor.Visitor;
 
 /**
  * 

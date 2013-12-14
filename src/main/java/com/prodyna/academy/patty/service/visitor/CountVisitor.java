@@ -1,8 +1,9 @@
-package com.prodyna.academy.patty.service;
+package com.prodyna.academy.patty.service.visitor;
 
 import com.prodyna.academy.patty.domain.ImageFile;
 import com.prodyna.academy.patty.domain.TextFile;
 import com.prodyna.academy.patty.domain.VideoFile;
+import com.prodyna.academy.patty.service.filter.Filter;
 
 /**
  * visit all nodes in hierarchy and count if filter matches

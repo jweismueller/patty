@@ -1,4 +1,4 @@
-package com.prodyna.academy.patty.service;
+package com.prodyna.academy.patty.service.filter;
 
 import com.prodyna.academy.patty.domain.ImageFile;
 import com.prodyna.academy.patty.domain.Node;
