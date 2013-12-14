@@ -16,6 +16,7 @@ public class Folder extends Node {
 
 	Folder(final String name) {
 		super.setName(name);
+		super.setType(FileType.FOLDER);
 	}
 
 	public void add(final Node node) {

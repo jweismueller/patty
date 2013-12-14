@@ -16,6 +16,7 @@ public class TextFile extends File {
 		this.pageCount = pageCount;
 		super.setName(name);
 		super.setSize(size);
+		super.setType(FileType.TEXT);
 	}
 
 	public String getTextEncoding() {

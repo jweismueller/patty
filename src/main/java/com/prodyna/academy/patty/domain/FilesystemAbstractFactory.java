@@ -10,15 +10,15 @@ public class FilesystemAbstractFactory {
 		return new Folder(name);
 	}
 	
-	public static ImageFile createImageFile(String name, long size, long height, long width) {
-		return new ImageFile(name, size, height, width);
+	public static ImageFile createImageFile(String name, MediaSpecification spec) {
+		return new ImageFile(name, spec.getSize(), spec.getHeight(), spec.getWidth());
 	}
 	
-	public static TextFile createTextFile(String name, long size, String textEncoding, long pageCount) {
-		return new TextFile(name, size, textEncoding, pageCount);
+	public static TextFile createTextFile(String name, TextSpecification spec) {
+		return new TextFile(name, spec.getSize(), spec.getTextEncoding(), spec.getPageCount());
 	}
 	
-	public static VideoFile createVideoFile(String name, long size, long height, long width) {
-		return new VideoFile(name,size,height,width);
+	public static VideoFile createVideoFile(String name, MediaSpecification spec) {
+		return new VideoFile(name, spec.getSize(), spec.getHeight(), spec.getWidth());
 	}
 }

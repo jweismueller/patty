@@ -59,7 +59,7 @@ public class VirtualFileManagerTest {
 			assertTrue(list2.size() == 0);
 			
 			//prepare testing move functionality
-			final Folder newFolderNode = (Folder) vfm.newFolderNode("sub-folder");
+			Folder newFolderNode = (Folder) vfm.newFolderNode("sub-folder");
 			vfm.add(root, newFolderNode);
 			assertNotNull(newFolderNode);
 			
@@ -76,6 +76,10 @@ public class VirtualFileManagerTest {
 
 			final List<Node> list5 = vfm.list(newFolderNode);
 			assertTrue(list5.size() == 1);
+			
+			newFolderNode = (Folder) vfm.newFolderNode("sub-folder 2");
+			vfm.add(root, newFolderNode);
+			assertNotNull(newFolderNode);
 			
 			String prettyList = vfm.prettyList(root);
 			System.out.println(prettyList);

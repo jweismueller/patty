@@ -16,6 +16,7 @@ public class VideoFile extends File {
 		this.width = width;
 		super.setName(name);
 		super.setSize(size);
+		super.setType(FileType.VIDEO);
 	}
 
 	public long getHeight() {
