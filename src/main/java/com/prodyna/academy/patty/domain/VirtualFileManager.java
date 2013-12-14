@@ -56,11 +56,9 @@ public class VirtualFileManager implements FileManager {
 		}
 
 		// propagate notify event to all parent until root reached
-		if (aNode.isRoot()) {
+		if (!aNode.isRoot()) {
 			Folder parent = aNode.getParent();
-			if (!parent.isRoot()) {
-				notifyObserver(parent, eventMessage);
-			}
+			notifyObserver(parent, eventMessage);
 		}
 	}
 
@@ -142,6 +140,7 @@ public class VirtualFileManager implements FileManager {
 	 * patty.domain.Folder, com.prodyna.academy.patty.domain.Node)
 	 */
 	public Node add(final Folder parent, final Node aNode) {
+		aNode.setParent(parent);
 		parent.add(aNode);
 		notifyObserver(parent, new EventMessage("new node added"));
 		return aNode;
