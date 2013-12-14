@@ -15,7 +15,7 @@ import com.prodyna.academy.patty.domain.VideoFile;
  * @author aheizenreder
  * 
  */
-public class PrettyListVisitor extends BasicVisitor {
+public class PrettyListVisitor extends BasicVisitor implements Visitor {
 
 	private static final int DEFAULT_NUM_OF_MOVES = 2;
 
