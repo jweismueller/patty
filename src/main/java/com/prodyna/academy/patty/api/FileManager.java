@@ -1,6 +1,6 @@
 package com.prodyna.academy.patty.api;
 
-import com.prodyna.academy.patty.api.oberserver.ObserverManager;
+import com.prodyna.academy.patty.api.observer.ObserverManager;
 import com.prodyna.academy.patty.vfs.VfsFileFactory;
 import com.prodyna.academy.patty.vfs.VfsFileSystem;
 

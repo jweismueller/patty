@@ -3,7 +3,7 @@ package com.prodyna.academy.patty.vfs;
 import com.prodyna.academy.patty.api.FileSystem;
 import com.prodyna.academy.patty.api.Folder;
 import com.prodyna.academy.patty.api.Node;
-import com.prodyna.academy.patty.api.oberserver.Event;
+import com.prodyna.academy.patty.api.observer.Event;
 import com.prodyna.academy.patty.vfs.observer.VfsEvent;
 import com.prodyna.academy.patty.vfs.observer.VfsObserverManager;
 

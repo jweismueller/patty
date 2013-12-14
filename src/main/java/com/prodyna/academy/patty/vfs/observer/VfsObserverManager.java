@@ -4,10 +4,10 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.prodyna.academy.patty.api.Node;
-import com.prodyna.academy.patty.api.oberserver.Event;
-import com.prodyna.academy.patty.api.oberserver.FolderChangeObserver;
-import com.prodyna.academy.patty.api.oberserver.Observer;
-import com.prodyna.academy.patty.api.oberserver.ObserverManager;
+import com.prodyna.academy.patty.api.observer.Event;
+import com.prodyna.academy.patty.api.observer.FolderChangeObserver;
+import com.prodyna.academy.patty.api.observer.Observer;
+import com.prodyna.academy.patty.api.observer.ObserverManager;
 
 public class VfsObserverManager implements ObserverManager {
 

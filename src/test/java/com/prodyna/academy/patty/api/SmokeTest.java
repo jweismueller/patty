@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
-import com.prodyna.academy.patty.api.oberserver.Event;
-import com.prodyna.academy.patty.api.oberserver.FolderChangeObserver;
+import com.prodyna.academy.patty.api.observer.Event;
+import com.prodyna.academy.patty.api.observer.FolderChangeObserver;
 import com.prodyna.academy.patty.vfs.visitor.VfsPrintVisitor;
 
 public class SmokeTest extends AbstractTest {
@@ -42,7 +42,7 @@ public class SmokeTest extends AbstractTest {
 		Assert.assertEquals(lorem.getUuid(), loremTest.getUuid());
 
 		//
-		multi();
+		observerTest();
 		Assert.assertEquals(5, eventMap.get("r1").size());
 		Assert.assertEquals(5, eventMap.get("r2").size());
 		//
@@ -53,7 +53,7 @@ public class SmokeTest extends AbstractTest {
 
 	}
 
-	public void multi() throws Exception {
+	public void observerTest() throws Exception {
 		{
 			Runnable r1 = new Runnable() {
 				final Logger log = LoggerFactory.getLogger("r1");
