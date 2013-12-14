@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import com.prodyna.academy.patty.api.Folder;
 import com.prodyna.academy.patty.api.Node;
-import com.prodyna.academy.patty.vfs.visitor.VfsVisitor;
+import com.prodyna.academy.patty.api.visitor.Visitor;
 
 public abstract class VfsNode implements Node, Comparable<VfsNode> {
 
@@ -38,8 +38,13 @@ public abstract class VfsNode implements Node, Comparable<VfsNode> {
 		folder.getChildren().add(this);
 	}
 
-	public void accept(VfsVisitor visitor) {
+	public void accept(Visitor visitor) {
 		visitor.visit(this);
+	}
+
+	@Override
+	public boolean isRoot() {
+		return getParent() == null;
 	}
 
 	@Override

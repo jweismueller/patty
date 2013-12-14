@@ -1,5 +1,6 @@
 package com.prodyna.academy.patty.api;
 
+import com.prodyna.academy.patty.api.oberserver.ObserverManager;
 import com.prodyna.academy.patty.vfs.VfsFileFactory;
 import com.prodyna.academy.patty.vfs.VfsFileSystem;
 
@@ -7,9 +8,9 @@ public class FileManager {
 
 	private static FileManager FILE_MANAGER = new FileManager();
 
-	private FileFactory fileFactory;
+	private VfsFileFactory fileFactory;
 
-	private FileSystem fileSystem;
+	private VfsFileSystem fileSystem;
 
 	private FileManager() {
 		fileFactory = new VfsFileFactory();
@@ -26,6 +27,10 @@ public class FileManager {
 
 	public FileFactory getFileFactory() {
 		return fileFactory;
+	}
+
+	public ObserverManager getObserverManager() {
+		return fileSystem.getObserverManager();
 	}
 
 }

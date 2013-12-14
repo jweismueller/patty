@@ -1,6 +1,6 @@
 package com.prodyna.academy.patty.vfs;
 
-import com.prodyna.academy.patty.vfs.visitor.VfsVisitor;
+import com.prodyna.academy.patty.api.visitor.Visitor;
 
 public abstract class VfsBinaryFile extends VfsFile {
 
@@ -18,8 +18,8 @@ public abstract class VfsBinaryFile extends VfsFile {
 	void setContent(byte[] content) {
 		this.content = content;
 	}
-	
-	public void accept(VfsVisitor visitor) {
+
+	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
 

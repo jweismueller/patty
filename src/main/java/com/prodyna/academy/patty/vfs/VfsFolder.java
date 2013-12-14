@@ -2,11 +2,12 @@ package com.prodyna.academy.patty.vfs;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.regex.Pattern;
 
 import com.prodyna.academy.patty.api.File;
 import com.prodyna.academy.patty.api.Folder;
 import com.prodyna.academy.patty.api.Node;
-import com.prodyna.academy.patty.vfs.visitor.VfsVisitor;
+import com.prodyna.academy.patty.api.visitor.Visitor;
 
 public class VfsFolder extends VfsNode implements Folder {
 
@@ -29,7 +30,7 @@ public class VfsFolder extends VfsNode implements Folder {
 		return out;
 	}
 
-	public void accept(VfsVisitor visitor) {
+	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
 
@@ -45,8 +46,31 @@ public class VfsFolder extends VfsNode implements Folder {
 	}
 
 	@Override
+	public SortedSet<Folder> listFolders() {
+		SortedSet<Folder> out = new TreeSet<>();
+		for (VfsNode node : children) {
+			if (node instanceof Folder) {
+				out.add((Folder) node);
+			}
+		}
+		return out;
+	}
+
+	@Override
 	public SortedSet<Node> list() {
 		return new TreeSet<Node>(children);
+	}
+
+	@Override
+	public SortedSet<Node> list(String regexp) {
+		Pattern p = Pattern.compile(".*" + regexp + ".*");
+		SortedSet<Node> out = new TreeSet<>();
+		for (VfsNode node : children) {
+			if (p.matcher(node.getName()).matches()) {
+				out.add(node);
+			}
+		}
+		return out;
 	}
 
 }

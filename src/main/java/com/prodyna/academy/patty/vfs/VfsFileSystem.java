@@ -3,8 +3,13 @@ package com.prodyna.academy.patty.vfs;
 import com.prodyna.academy.patty.api.FileSystem;
 import com.prodyna.academy.patty.api.Folder;
 import com.prodyna.academy.patty.api.Node;
+import com.prodyna.academy.patty.api.oberserver.Event;
+import com.prodyna.academy.patty.vfs.observer.VfsEvent;
+import com.prodyna.academy.patty.vfs.observer.VfsObserverManager;
 
 public class VfsFileSystem implements FileSystem {
+
+	private VfsObserverManager observerManager = new VfsObserverManager();
 
 	private final VfsFolder root;
 
@@ -21,7 +26,10 @@ public class VfsFileSystem implements FileSystem {
 	@Override
 	public void add(Folder f, Node n) {
 		VfsNode node = (VfsNode) n;
+		VfsFolder folder = (VfsFolder) f;
 		node.setParent(f);
+		Event e = new VfsEvent(folder);
+		observerManager.notifyFolderChange(e);
 	}
 
 	@Override
@@ -42,6 +50,10 @@ public class VfsFileSystem implements FileSystem {
 	public void delete(Node n) {
 		VfsFolder parent = (VfsFolder) n.getParent();
 		parent.getChildren().remove(n);
+	}
+
+	public VfsObserverManager getObserverManager() {
+		return observerManager;
 	}
 
 }

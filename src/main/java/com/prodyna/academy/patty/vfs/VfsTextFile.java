@@ -4,7 +4,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import com.prodyna.academy.patty.api.TextFile;
-import com.prodyna.academy.patty.vfs.visitor.VfsVisitor;
+import com.prodyna.academy.patty.api.visitor.Visitor;
 
 public class VfsTextFile extends VfsFile implements TextFile {
 
@@ -41,8 +41,8 @@ public class VfsTextFile extends VfsFile implements TextFile {
 		this.content = content;
 		this.charset = StandardCharsets.UTF_8;
 	}
-	
-	public void accept(VfsVisitor visitor) {
+
+	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
 
