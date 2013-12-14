@@ -43,7 +43,7 @@ public class VirtualFileManagerTest {
 			
 			//check if visitor finds newly created textfile
 			final String findByFileName = vfm.findByFileName(root, "Textfile.txt");
-			assertEquals(findByFileName, "[/: Textfile.txt 512 UTF-8 1] ");
+			assertEquals(findByFileName, "[root: Textfile.txt 512 UTF-8 1] ");
 			
 			//root folder now has to have one child (textfile)
 			final int fileAmount = vfm.getFileAmount(root);

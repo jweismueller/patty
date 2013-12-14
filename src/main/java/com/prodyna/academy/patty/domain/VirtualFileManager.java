@@ -38,7 +38,7 @@ public class VirtualFileManager implements FileManager {
 	}
 
 	private VirtualFileManager() {
-		root = FilesystemAbstractFactory.createFolder("/");
+		root = FilesystemAbstractFactory.createFolder("root");
 	}
 
 	/*
