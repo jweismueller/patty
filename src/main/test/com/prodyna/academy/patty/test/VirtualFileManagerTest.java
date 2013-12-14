@@ -76,7 +76,7 @@ public class VirtualFileManagerTest {
 			final List<Node> list5 = vfm.list(newFolderNode);
 			assertTrue(list5.size() == 1);
 			
-			String prettyList = vfm.prettyList(newFolderNode);
+			String prettyList = vfm.prettyList(root);
 			System.out.println(prettyList);
 		} catch (final UnsupportedFileType e) {
 			e.printStackTrace();

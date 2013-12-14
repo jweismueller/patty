@@ -26,7 +26,7 @@ public class PrettyListVisitor extends BasicVisitor {
 	private int numOfMoves;
 
 	private String move;
-	
+
 	private StringBuilder result;
 
 	public PrettyListVisitor() {
@@ -46,8 +46,7 @@ public class PrettyListVisitor extends BasicVisitor {
 	 */
 	@Override
 	public void visit(ImageFile file) {
-		result.append(prefixBuilder.toString());
-		result.append(file.getName());
+		printNameLine(file.getName());
 	}
 
 	/*
@@ -59,8 +58,7 @@ public class PrettyListVisitor extends BasicVisitor {
 	 */
 	@Override
 	public void visit(TextFile file) {
-		result.append(prefixBuilder.toString());
-		result.append(file.getName());
+		printNameLine(file.getName());
 	}
 
 	/*
@@ -72,8 +70,7 @@ public class PrettyListVisitor extends BasicVisitor {
 	 */
 	@Override
 	public void visit(VideoFile file) {
-		result.append(prefixBuilder.toString());
-		result.append(file.getName());
+		printNameLine(file.getName());
 	}
 
 	/*
@@ -85,13 +82,11 @@ public class PrettyListVisitor extends BasicVisitor {
 	 */
 	@Override
 	public void visit(Folder folder) {
-		result.append(prefixBuilder.toString());
-		result.append(folder.getName());
-		result.append(File.pathSeparator);
+		printNameLine(folder);
 		// add moves to the prefix
 		addMoves();
 		// go trough children
-		for (Node aNode: folder.getChildren()){
+		for (Node aNode : folder.getChildren()) {
 			aNode.accept(this);
 		}
 		// remove moves from prefix
@@ -106,7 +101,8 @@ public class PrettyListVisitor extends BasicVisitor {
 	}
 
 	/**
-	 * @param numOfMoves the numOfMoves to set
+	 * @param numOfMoves
+	 *            the numOfMoves to set
 	 */
 	public void setNumOfMoves(int numOfMoves) {
 		this.numOfMoves = numOfMoves;
@@ -127,7 +123,8 @@ public class PrettyListVisitor extends BasicVisitor {
 	}
 
 	/**
-	 * @param move the move to set
+	 * @param move
+	 *            the move to set
 	 */
 	public void setMove(String move) {
 		this.move = move;
@@ -147,6 +144,22 @@ public class PrettyListVisitor extends BasicVisitor {
 		for (int i = 0; i < numOfMoves; i++) {
 			prefixBuilder.deleteCharAt(prefixBuilder.length() - 1);
 		}
+	}
+
+	/**
+	 * @param file
+	 */
+	private void printNameLine(String fileName) {
+		result.append(prefixBuilder.toString());
+		result.append(fileName);
+		result.append(System.lineSeparator());
+	}
+
+	private void printNameLine(Folder folder) {
+		result.append(prefixBuilder.toString());
+		result.append(folder.getName());
+		result.append(File.separator);
+		result.append(System.lineSeparator());
 	}
 
 }
