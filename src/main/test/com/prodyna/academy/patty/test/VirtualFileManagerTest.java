@@ -26,31 +26,39 @@ public class VirtualFileManagerTest {
 
 		Node textFileNode;
 		try {
+			//create textFile
 			textFileNode = vfm.newTextFileNode("Textfile.txt", 512, "UTF-8", 1);
 			assertNotNull(textFileNode);
 
+			//register observer for root node
 			vfm.register(new MyNodeObserver(), root);
 			
+			//add node to root folder
 			final Node addedNode = vfm.add(root, textFileNode);
-
 			assertNotNull(addedNode);
 
+			//root folder now has to have one child (textfile)
 			final List<Node> list = vfm.list(root);
 			assertTrue(list.size() == 1);
 			
+			//check if visitor finds newly created textfile
 			final String findByFileName = vfm.findByFileName(root, "Textfile.txt");
 			assertEquals(findByFileName, "[/: Textfile.txt 512 UTF-8 1] ");
 			
+			//root folder now has to have one child (textfile)
 			final int fileAmount = vfm.getFileAmount(root);
 			assertEquals(1, fileAmount);
 			
+			//there should be no image files
 			final int imageFileAmount = vfm.getImageFileAmount(root);
 			assertEquals(0, imageFileAmount);
 			
+			//delete textfile and check if root node now has no children anymore
 			vfm.delete(textFileNode);
 			final List<Node> list2 = vfm.list(root);
 			assertTrue(list2.size() == 0);
 			
+			//prepare testing move functionality
 			final Folder newFolderNode = (Folder) vfm.newFolderNode("sub-folder");
 			assertNotNull(newFolderNode);
 			
@@ -67,8 +75,6 @@ public class VirtualFileManagerTest {
 
 			final List<Node> list5 = vfm.list(newFolderNode);
 			assertTrue(list5.size() == 1);
-			
-			
 		} catch (final UnsupportedFileType e) {
 			e.printStackTrace();
 		}

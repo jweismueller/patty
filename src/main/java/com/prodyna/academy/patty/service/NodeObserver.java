@@ -3,6 +3,7 @@
  */
 package com.prodyna.academy.patty.service;
 
+import com.prodyna.academy.patty.domain.EventMessage;
 import com.prodyna.academy.patty.domain.Node;
 
 /**
@@ -13,5 +14,5 @@ import com.prodyna.academy.patty.domain.Node;
  */
 public interface NodeObserver {
 
-	void notifyObserver(Node aNode);
+	void notifyObserver(Node aNode, EventMessage message);
 }

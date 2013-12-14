@@ -45,12 +45,12 @@ public class VirtualFileManager implements FileManager {
 	 * 
 	 * @see com.prodyna.academy.patty.domain.NodeObserver#notifyObserver()
 	 */
-	public void notifyObserver(final Node aNode) {
+	public void notifyObserver(final Node aNode, EventMessage eventMessage) {
 		final List<NodeObserver> observerList = observers.get(aNode);
 
 		if (observerList != null) {
 			for (final NodeObserver nodeObserver : observerList) {
-				nodeObserver.notifyObserver(aNode);
+				nodeObserver.notifyObserver(aNode, eventMessage);
 			}
 		}
 
@@ -58,7 +58,7 @@ public class VirtualFileManager implements FileManager {
 		if (aNode.isRoot()) {
 			Folder parent = aNode.getParent();
 			if (!parent.isRoot()) {
-				notifyObserver(parent);
+				notifyObserver(parent, eventMessage);
 			}
 		}
 	}
@@ -142,7 +142,7 @@ public class VirtualFileManager implements FileManager {
 	 */
 	public Node add(final Folder parent, final Node aNode) {
 		parent.add(aNode);
-		notifyObserver(parent);
+		notifyObserver(parent, new EventMessage("new node added"));
 		return aNode;
 	}
 
@@ -155,7 +155,7 @@ public class VirtualFileManager implements FileManager {
 	 */
 	public Node delete(final Node aNode) {
 		aNode.delete();
-		notifyObserver(aNode.getParent());
+		notifyObserver(aNode.getParent(), new EventMessage("node deleted"));
 		return aNode;
 	}
 
@@ -213,10 +213,10 @@ public class VirtualFileManager implements FileManager {
 	public Node move(final Node aNode, final Folder newParent) {
 		final Folder oldParentFolder = aNode.getParent();
 		oldParentFolder.deleteChild(aNode);
-		notifyObserver(oldParentFolder);
+		notifyObserver(oldParentFolder, new EventMessage("node removed"));
 
 		newParent.add(aNode);
-		notifyObserver(newParent);
+		notifyObserver(newParent, new EventMessage("node moved"));
 		return aNode;
 	}
 
