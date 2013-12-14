@@ -96,5 +96,9 @@ public class Folder extends Node {
 		}
 		return true;
 	}
+
+	public boolean isRoot() {
+		return (getParent() != null);
+	}
 	
 }
