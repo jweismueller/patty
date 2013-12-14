@@ -7,7 +7,7 @@ package com.prodyna.academy.patty.domain;
  * @author aheizenreder
  *
  */
-enum FileType {
+public enum FileType {
 	TEXT("Text"),
 	IMAGE("Image"),
 	VIDEO("Video"),
