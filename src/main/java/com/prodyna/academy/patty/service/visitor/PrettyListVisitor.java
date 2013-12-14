@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.prodyna.academy.patty.service;
+package com.prodyna.academy.patty.service.visitor;
 
 import java.io.File;
 

@@ -3,7 +3,7 @@ package com.prodyna.academy.patty.domain;
 import java.util.Collections;
 import java.util.List;
 
-import com.prodyna.academy.patty.service.Visitor;
+import com.prodyna.academy.patty.service.visitor.Visitor;
 
 /**
  * 

@@ -3,7 +3,7 @@ package com.prodyna.academy.patty.domain;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.prodyna.academy.patty.service.Filter;
+import com.prodyna.academy.patty.service.filter.Filter;
 
 /**
  * return true in case of an match of filename

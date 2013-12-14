@@ -1,4 +1,4 @@
-package com.prodyna.academy.patty.service;
+package com.prodyna.academy.patty.service.visitor;
 
 import com.prodyna.academy.patty.domain.Folder;
 import com.prodyna.academy.patty.domain.ImageFile;

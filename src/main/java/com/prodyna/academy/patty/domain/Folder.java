@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.prodyna.academy.patty.service.Visitor;
+import com.prodyna.academy.patty.service.visitor.Visitor;
 
 /**
  * 

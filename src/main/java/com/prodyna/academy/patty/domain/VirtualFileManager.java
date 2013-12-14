@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.prodyna.academy.patty.service.AllFileFilter;
-import com.prodyna.academy.patty.service.CountVisitor;
-import com.prodyna.academy.patty.service.ImageFilter;
 import com.prodyna.academy.patty.service.NodeObserver;
-import com.prodyna.academy.patty.service.PrettyListVisitor;
-import com.prodyna.academy.patty.service.PrintVisitor;
 import com.prodyna.academy.patty.service.UnsupportedFileType;
+import com.prodyna.academy.patty.service.filter.AllFileFilter;
+import com.prodyna.academy.patty.service.filter.ImageFilter;
+import com.prodyna.academy.patty.service.visitor.CountVisitor;
+import com.prodyna.academy.patty.service.visitor.PrettyListVisitor;
+import com.prodyna.academy.patty.service.visitor.PrintVisitor;
 
 /**
  * implements a file manager as a singleton.
