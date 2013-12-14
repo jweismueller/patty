@@ -98,4 +98,7 @@ public abstract class Node {
 		return true;
 	}
 	
+	public boolean isRoot() {
+		return (getParent() != null);
+	}
 }

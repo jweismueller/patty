@@ -214,9 +214,10 @@ public class VirtualFileManager implements FileManager {
 	public Node move(final Node aNode, final Folder newParent) {
 		final Folder oldParentFolder = aNode.getParent();
 		oldParentFolder.deleteChild(aNode);
+		notifyObserver(oldParentFolder);
 
 		newParent.add(aNode);
-
+		notifyObserver(newParent);
 		return aNode;
 	}
 

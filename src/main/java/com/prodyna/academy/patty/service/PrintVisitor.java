@@ -15,7 +15,7 @@ import com.prodyna.academy.patty.domain.VideoFile;
  */
 public class PrintVisitor extends BasicVisitor implements Visitor {
 	private Filter filter;
-	private StringBuffer resultBuffer;
+	private StringBuffer resultBuffer = new StringBuffer();
 
 	/** 
 	 * print informations to a image file matched to the filter.
@@ -32,7 +32,7 @@ public class PrintVisitor extends BasicVisitor implements Visitor {
 			resultBuffer.append("[" + parentFolder + ": ");
 			resultBuffer.append(name + " ");
 			resultBuffer.append(size + " ");
-			resultBuffer.append(height + "x" + width + "],");
+			resultBuffer.append(height + "x" + width + "] ");
 		}
 	}
 
@@ -51,7 +51,7 @@ public class PrintVisitor extends BasicVisitor implements Visitor {
 			resultBuffer.append(name + " ");
 			resultBuffer.append(size + " ");
 			resultBuffer.append(textEncoding + " ");
-			resultBuffer.append(pageCount + "],");
+			resultBuffer.append(pageCount + "] ");
 		}
 	}
 
@@ -69,7 +69,7 @@ public class PrintVisitor extends BasicVisitor implements Visitor {
 			resultBuffer.append("[" + parentFolder + ": ");
 			resultBuffer.append(name);
 			resultBuffer.append(size);
-			resultBuffer.append(height + "x" + width + "],");
+			resultBuffer.append(height + "x" + width + "] ");
 		}
 	}
 
