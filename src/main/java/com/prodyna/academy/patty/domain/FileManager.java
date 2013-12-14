@@ -26,6 +26,9 @@ public interface FileManager extends NodeObserver {
 	Node add(Folder parent, Node aNode);
 	Node delete(Node aNode);
 	List<Node> list(Node aNode);
+	
+	String prettyList(Node aNode);
+	
 	Node move(Node aNode, Folder newParent);
 
 	// observer management
