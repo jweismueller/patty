@@ -58,9 +58,7 @@ public class VirtualFileManager implements FileManager {
 		// propagate notify event to all parent until root reached
 		if (!aNode.isRoot()) {
 			Folder parent = aNode.getParent();
-			if (!parent.isRoot()) {
-				notifyObserver(parent, eventMessage);
-			}
+			notifyObserver(parent, eventMessage);
 		}
 	}
 
