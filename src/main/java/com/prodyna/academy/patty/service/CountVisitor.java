@@ -1,10 +1,6 @@
 package com.prodyna.academy.patty.service;
 
-import java.util.Set;
-
-import com.prodyna.academy.patty.domain.Folder;
 import com.prodyna.academy.patty.domain.ImageFile;
-import com.prodyna.academy.patty.domain.Node;
 import com.prodyna.academy.patty.domain.TextFile;
 import com.prodyna.academy.patty.domain.VideoFile;
 
@@ -13,7 +9,7 @@ import com.prodyna.academy.patty.domain.VideoFile;
  * 
  * @author Martin Monshausen, PRODYNA AG
  */
-public class CountVisitor implements Visitor {
+public class CountVisitor extends BasicVisitor implements Visitor {
 	private int countResult;
 	private Filter filter;
 	
@@ -44,17 +40,6 @@ public class CountVisitor implements Visitor {
 	public void visit(final VideoFile file) {
 		if(filter.matches(file)) {
 			countResult++;
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.prodyna.academy.patty.service.Visitor#visit(com.prodyna.academy.patty.domain.Folder)
-	 */
-	@Override
-	public void visit(final Folder folder) {
-		Set<Node> children = folder.getChildren();
-		for (Node node : children) {
-			node.accept(this);
 		}
 	}
 

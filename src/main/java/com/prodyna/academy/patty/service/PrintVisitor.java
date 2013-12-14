@@ -1,10 +1,6 @@
 package com.prodyna.academy.patty.service;
 
-import java.util.Set;
-
-import com.prodyna.academy.patty.domain.Folder;
 import com.prodyna.academy.patty.domain.ImageFile;
-import com.prodyna.academy.patty.domain.Node;
 import com.prodyna.academy.patty.domain.TextFile;
 import com.prodyna.academy.patty.domain.VideoFile;
 
@@ -17,7 +13,7 @@ import com.prodyna.academy.patty.domain.VideoFile;
  * @author aheizenreder
  *
  */
-public class PrintVisitor implements Visitor {
+public class PrintVisitor extends BasicVisitor implements Visitor {
 	private Filter filter;
 	private StringBuffer resultBuffer;
 
@@ -74,17 +70,6 @@ public class PrintVisitor implements Visitor {
 			resultBuffer.append(name);
 			resultBuffer.append(size);
 			resultBuffer.append(height + "x" + width + "],");
-		}
-	}
-
-	
-	/**
-	 * 
-	 */
-	public void visit(Folder folder) {
-		Set<Node> children = folder.getChildren();
-		for (Node node : children) {
-			node.accept(this);
 		}
 	}
 
