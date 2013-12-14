@@ -99,6 +99,6 @@ public abstract class Node {
 	}
 	
 	public boolean isRoot() {
-		return (getParent() != null);
+		return (getParent() == null);
 	}
 }

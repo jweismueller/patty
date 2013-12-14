@@ -60,6 +60,7 @@ public class VirtualFileManagerTest {
 			
 			//prepare testing move functionality
 			final Folder newFolderNode = (Folder) vfm.newFolderNode("sub-folder");
+			vfm.add(root, newFolderNode);
 			assertNotNull(newFolderNode);
 			
 			final Node newMediaFileNode = vfm.newMediaFileNode(FileType.VIDEO, "media.avi", 1024, 800, 600);
@@ -67,16 +68,16 @@ public class VirtualFileManagerTest {
 			vfm.add(root, newMediaFileNode);
 			
 			final List<Node> list3 = vfm.list(root);
-			assertTrue(list3.size() == 1);
+			assertTrue(list3.size() == 2);
 			
 			vfm.move(newMediaFileNode, newFolderNode);
 			final List<Node> list4 = vfm.list(root);
-			assertTrue(list4.size() == 0);
+			assertTrue(list4.size() == 1);
 
 			final List<Node> list5 = vfm.list(newFolderNode);
 			assertTrue(list5.size() == 1);
 			
-			String prettyList = vfm.prettyList(newFolderNode);
+			String prettyList = vfm.prettyList(root);
 			System.out.println(prettyList);
 		} catch (final UnsupportedFileType e) {
 			e.printStackTrace();
