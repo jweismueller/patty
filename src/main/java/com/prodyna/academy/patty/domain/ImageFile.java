@@ -16,6 +16,7 @@ public class ImageFile extends File {
 		this.width = width;
 		super.setName(name);
 		super.setSize(size);
+		super.setType(FileType.IMAGE);
 	}
 
 	public long getHeight() {

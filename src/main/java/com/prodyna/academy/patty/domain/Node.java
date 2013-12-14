@@ -13,6 +13,7 @@ public abstract class Node {
 	private String name;
 	private long size;
 	private Folder parent;
+	private FileType type;
 
 	public String getName() {
 		return name;
@@ -100,5 +101,13 @@ public abstract class Node {
 	
 	public boolean isRoot() {
 		return (getParent() == null);
+	}
+
+	public FileType getType() {
+		return type;
+	}
+
+	public void setType(FileType type) {
+		this.type = type;
 	}
 }

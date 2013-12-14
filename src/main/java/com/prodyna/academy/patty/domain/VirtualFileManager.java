@@ -11,7 +11,9 @@ import java.util.Map;
 import com.prodyna.academy.patty.service.NodeObserver;
 import com.prodyna.academy.patty.service.UnsupportedFileType;
 import com.prodyna.academy.patty.service.filter.AllFileFilter;
-import com.prodyna.academy.patty.service.filter.ImageFilter;
+import com.prodyna.academy.patty.service.filter.FilenameFilter;
+import com.prodyna.academy.patty.service.filter.FiletypeFilter;
+import com.prodyna.academy.patty.service.filter.FilterBuilder;
 import com.prodyna.academy.patty.service.visitor.CountVisitor;
 import com.prodyna.academy.patty.service.visitor.PrettyListVisitor;
 import com.prodyna.academy.patty.service.visitor.PrintVisitor;
@@ -226,7 +228,8 @@ public class VirtualFileManager implements FileManager {
 	 */
 	public int getImageFileAmount(Node aNode) {
 		CountVisitor visitor = new CountVisitor();
-		visitor.setFilter(new ImageFilter());
+		FilterBuilder builder = new FilterBuilder();
+		visitor.setFilter(builder.buildFiletypeFilter(FileType.IMAGE));
 
 		aNode.accept(visitor);
 
@@ -258,7 +261,8 @@ public class VirtualFileManager implements FileManager {
 	 */
 	public String findByFileName(Folder aNode, String fileName) {
 		PrintVisitor visitor = new PrintVisitor();
-		visitor.setFilter(new FilenameFilter(fileName));
+		FilterBuilder builder = new FilterBuilder();
+		visitor.setFilter(builder.buildFilenameFilter(fileName));
 
 		aNode.accept(visitor);
 
