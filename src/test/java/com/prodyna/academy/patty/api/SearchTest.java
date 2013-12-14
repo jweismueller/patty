@@ -10,7 +10,7 @@ import com.prodyna.academy.patty.api.criteria.Criterion;
 import com.prodyna.academy.patty.vfs.visitor.VfsPrintVisitor;
 import com.prodyna.academy.patty.vfs.visitor.VfsSearchVisitor;
 
-public class CriterionTest extends AbstractTest {
+public class SearchTest extends AbstractTest {
 
 	private final FileManager manager = FileManager.getInstance();
 
