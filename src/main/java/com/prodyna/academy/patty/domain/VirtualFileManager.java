@@ -12,6 +12,7 @@ import com.prodyna.academy.patty.service.AllFileFilter;
 import com.prodyna.academy.patty.service.CountVisitor;
 import com.prodyna.academy.patty.service.ImageFilter;
 import com.prodyna.academy.patty.service.NodeObserver;
+import com.prodyna.academy.patty.service.PrettyListVisitor;
 import com.prodyna.academy.patty.service.PrintVisitor;
 import com.prodyna.academy.patty.service.UnsupportedFileType;
 
@@ -54,10 +55,12 @@ public class VirtualFileManager implements FileManager {
 			}
 		}
 
-		//propagate notify event to all parent until root reached
-		Folder parent = aNode.getParent();
-		if(!parent.isRoot()) {
-			notifyObserver(parent);
+		// propagate notify event to all parent until root reached
+		if (aNode.isRoot()) {
+			Folder parent = aNode.getParent();
+			if (!parent.isRoot()) {
+				notifyObserver(parent);
+			}
 		}
 	}
 
@@ -263,5 +266,12 @@ public class VirtualFileManager implements FileManager {
 		aNode.accept(visitor);
 
 		return visitor.getResultList();
+	}
+
+	@Override
+	public String prettyList(Node aNode) {
+		PrettyListVisitor prettyListVisitor = new PrettyListVisitor();
+		aNode.accept(prettyListVisitor);
+		return prettyListVisitor.getPretyListString();
 	}
 }
