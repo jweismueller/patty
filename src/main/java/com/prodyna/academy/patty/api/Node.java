@@ -14,4 +14,6 @@ public interface Node extends Visitable {
 
 	boolean isRoot();
 
+	String printPath();
+
 }

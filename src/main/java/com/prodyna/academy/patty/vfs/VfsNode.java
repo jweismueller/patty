@@ -1,7 +1,11 @@
 package com.prodyna.academy.patty.vfs;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.prodyna.academy.patty.api.Folder;
 import com.prodyna.academy.patty.api.Node;
 import com.prodyna.academy.patty.api.visitor.Visitor;
@@ -77,4 +81,15 @@ public abstract class VfsNode implements Node, Comparable<VfsNode> {
 		return this.uuid.compareTo(o.uuid);
 	}
 
+	@Override
+	public String printPath() {
+		List<String> parts = new ArrayList<>();
+		Node n = this;
+		parts.add(n.getName());
+		while (!n.isRoot()) {
+			n = n.getParent();
+			parts.add(n.getName());
+		}
+		return Joiner.on('/').join(Lists.reverse(parts));
+	}
 }
