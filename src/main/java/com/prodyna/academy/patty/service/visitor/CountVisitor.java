@@ -1,8 +1,5 @@
 package com.prodyna.academy.patty.service.visitor;
 
-import com.prodyna.academy.patty.domain.ImageFile;
-import com.prodyna.academy.patty.domain.TextFile;
-import com.prodyna.academy.patty.domain.VideoFile;
 import com.prodyna.academy.patty.service.filter.Filter;
 
 /**
@@ -10,45 +7,18 @@ import com.prodyna.academy.patty.service.filter.Filter;
  * 
  * @author Martin Monshausen, PRODYNA AG
  */
-public class CountVisitor extends BasicVisitor implements Visitor {
-	private int countResult;
-	private Filter filter;
-	
-	/* (non-Javadoc)
-	 * @see com.prodyna.academy.patty.service.Visitor#visit(com.prodyna.academy.patty.domain.ImageFile)
-	 */
-	@Override
-	public void visit(final ImageFile file) {
-		if(filter.matches(file)) {
-			countResult++;
-		}
+public class CountVisitor extends SearchVisitor implements Visitor {
+
+	public CountVisitor(){
+		
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.prodyna.academy.patty.service.Visitor#visit(com.prodyna.academy.patty.domain.TextFile)
-	 */
-	@Override
-	public void visit(final TextFile file) {
-		if(filter.matches(file)) {
-			countResult++;
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.prodyna.academy.patty.service.Visitor#visit(com.prodyna.academy.patty.domain.VideoFile)
-	 */
-	@Override
-	public void visit(final VideoFile file) {
-		if(filter.matches(file)) {
-			countResult++;
-		}
+	public CountVisitor(Filter filter){
+		super(filter);
 	}
 
 	public int getCountResult() {
-		return countResult;
+		return getResults().size();
 	}
 
-	public void setFilter(Filter filter) {
-		this.filter = filter;
-	}
 }

@@ -7,7 +7,6 @@ import java.io.File;
 
 import com.prodyna.academy.patty.domain.Folder;
 import com.prodyna.academy.patty.domain.ImageFile;
-import com.prodyna.academy.patty.domain.Node;
 import com.prodyna.academy.patty.domain.TextFile;
 import com.prodyna.academy.patty.domain.VideoFile;
 
@@ -86,9 +85,7 @@ public class PrettyListVisitor extends BasicVisitor implements Visitor {
 		// add moves to the prefix
 		addMoves();
 		// go trough children
-		for (Node aNode : folder.getChildren()) {
-			aNode.accept(this);
-		}
+		super.visit(folder);
 		// remove moves from prefix
 		removeMoves();
 	}
