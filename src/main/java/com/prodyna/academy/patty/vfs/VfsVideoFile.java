@@ -5,6 +5,9 @@ import com.prodyna.academy.patty.api.visitor.Visitor;
 
 public class VfsVideoFile extends VfsBinaryFile implements VideoFile {
 
+	VfsVideoFile() {
+	}
+
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
