@@ -49,6 +49,7 @@ public class CriterionTest extends AbstractTest {
 		Criterion c = CriteriaBuilder.get().name("h.*").sizeGe(500).and().regex("[0-9]+").or().getCriteria();
 		VfsSearchVisitor searchVisitor = new VfsSearchVisitor(c);
 		root.accept(searchVisitor);
+		Assert.assertEquals(5, searchVisitor.getResults().size());
 		for (Node n : searchVisitor.getResults()) {
 			log.info(n.printPath());
 		}
