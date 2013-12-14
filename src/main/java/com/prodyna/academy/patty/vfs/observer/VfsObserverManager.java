@@ -32,6 +32,11 @@ public class VfsObserverManager implements ObserverManager {
 		map.get(n.getUuid()).remove(o);
 	}
 
+	@Override
+	public void removeObserver(Node n, FolderChangeObserver o) {
+		mapFolderChange.get(n.getUuid()).remove(o);
+	}
+
 	public void notify(Event e) {
 		String uuid = e.getNode().getUuid();
 		for (Observer observer : map.get(uuid)) {

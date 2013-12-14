@@ -10,4 +10,6 @@ public interface ObserverManager {
 
 	void removeObserver(Node n, Observer o);
 
+	void removeObserver(Node n, FolderChangeObserver o);
+
 }
